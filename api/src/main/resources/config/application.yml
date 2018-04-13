@@ -1,0 +1,37 @@
+server:
+  port: 8086
+  compression:
+    enabled: true
+    mime-types: text/plain,application/x-javascript,text/css,application/xml,text/xml,text/javascript,text/json,application/json
+    min-response-size: 2048
+  servlet:
+    context-path: /blog
+
+spring:
+  application:
+    name: blog
+  devtools:
+    restart:
+      enabled: true
+  datasource:
+      url: jdbc:mysql://127.0.0.1:3306/blog?useUnicode=true&characterEncoding=UTF-8&&useSSL=true&allowMultiQueries=true
+      username: root
+      password: root
+      driver-class-name: com.mysql.jdbc.Driver
+      type: com.zaxxer.hikari.HikariDataSource
+      hikari:
+        maximum-pool-size: 20
+        minimum-idle: 2
+
+mybatis:
+  mapper-locations: classpath*:sqls/**/*.xml
+  config-location: classpath:config/mybatis-config.xml
+mapper:
+  not-empty: false
+  identity: MYSQL
+  uuid: select UUID()
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql

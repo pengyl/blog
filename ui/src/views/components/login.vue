@@ -15,11 +15,11 @@
           </el-form-item>
         </el-col>
       </el-row>
+      <el-row :gutter="20" type="flex" justify="center">
+        <el-button type="submit" @click="submitForm('loginForm')">登录</el-button>
+        <label v-model="error.massage" v-if="error.show" v-text="error.message" style="color: red"> </label>
+      </el-row>
     </el-form>
-    <el-button type="primary" @click="submitForm('loginForm')">登录</el-button>
-    <el-row :gutter="20" type="flex" justify="center">
-    <label v-model="error.massage" v-if="error.show" v-text="error.message" style="color: red"> </label>
-    </el-row>
   </div>
 </template>
 

@@ -1,11 +1,13 @@
 package com.pengyl.api.controller;
 
+import com.pengyl.api.bean.Article;
 import com.pengyl.api.service.IArticleService;
 import com.pengyl.api.util.ModelMap;
 import com.pengyl.api.util.PageParams;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.annotations.ApiIgnore;
 
 @Api("文章")
 @RestController
@@ -45,12 +47,13 @@ public class ArticleController {
 
     @ApiOperation("保存文章")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", value = "id ", required = false, dataType = "String", paramType = "query")})
+            @ApiImplicitParam(name = "article", value = "article", required = false, dataType = "Article", paramType = "body")})
     @ApiResponses({@ApiResponse(code = 200, message = "success", response = ModelMap.class)})
     @RequestMapping(value = "",method = RequestMethod.POST)
-    public ModelMap saveArticle(ModelMap modelMap){
+    public ModelMap saveArticle(@RequestBody Article article,@ApiIgnore ModelMap modelMap){
+        article=  articleService.save(article);
         modelMap.setMessage("保存文章接口");
-        modelMap.setResult("hhh");
+        modelMap.setResult(article);
         modelMap.setStatus(1);
         return modelMap;
     }

@@ -7,4 +7,6 @@ import java.util.List;
 public interface IArticleService {
 
     List<Article> findList();
+
+    Article save(Article article);
 }

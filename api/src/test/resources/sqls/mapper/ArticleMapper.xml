@@ -5,13 +5,14 @@
         <result column="id" jdbcType="VARCHAR" property="id"/>
         <result column="title" jdbcType="VARCHAR" property="title"/>
         <result column="content" jdbcType="VARCHAR" property="content"/>
+        <result column="html_content" jdbcType="VARCHAR" property="htmlContent"/>
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
         <result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime"/>
         <result column="create_user" jdbcType="VARCHAR" property="createUser"/>
         <result column="update_user" jdbcType="VARCHAR" property="updateUser"/>
     </resultMap>
     <sql id="column">
-      article.id,article.title,article.content,
+      article.id,article.title,article.content,html_content
       article.create_time,article.last_update_time,article.create_user,article.update_user
     </sql>
     <insert id="insert" parameterType="com.pengyl.api.bean.Article">

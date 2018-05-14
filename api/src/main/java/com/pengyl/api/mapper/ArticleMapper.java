@@ -9,7 +9,11 @@ import java.util.List;
 public interface ArticleMapper {
     int insert(Article record);
 
+    int save(Article record);
+
     int insertSelective(Article record);
 
-    List findList();
+    List<Article> findList();
+
+
 }

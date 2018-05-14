@@ -1,5 +1,8 @@
 package com.pengyl.api.bean;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Article {
@@ -8,9 +11,12 @@ public class Article {
     private String title;
 
     private String content;
-
+    private String htmlContent;
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd") //返回格式化的字符串
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") //接收格式化的字符串
     private Date createTime;
-
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd") //返回格式化的字符串
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") //接收格式化的字符串
     private Date lastUpdateTime;
 
     private String createUser;
@@ -71,5 +77,13 @@ public class Article {
 
     public void setUpdateUser(String updateUser) {
         this.updateUser = updateUser == null ? null : updateUser.trim();
+    }
+
+    public String getHtmlContent() {
+        return htmlContent;
+    }
+
+    public void setHtmlContent(String htmlContent) {
+        this.htmlContent = htmlContent;
     }
 }

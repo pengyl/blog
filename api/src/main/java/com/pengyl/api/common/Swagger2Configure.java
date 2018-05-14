@@ -17,7 +17,7 @@ public class Swagger2Configure {
     public Docket swaggerApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .groupName("博客").forCodeGeneration(true)
-                .pathMapping("/blog").select().apis(RequestHandlerSelectors.basePackage("com.pengyl.api"))
+                .pathMapping("/").select().apis(RequestHandlerSelectors.basePackage("com.pengyl.api"))
                 .build().apiInfo(this.apiInfo()).useDefaultResponseMessages(false);
     }
 
